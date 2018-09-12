@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>添加书籍信息</h1>
+    <form action="/book/addbook">
+    <label for="">类别：</label>
+    <select name="typeInfo">
+ <!-- 选项是由上一张表决定  -->
+ {{each data choose}}
+<option value="{{choose.id}}">{{choose.type}}</option>
+ {{/each}}
+    </select>
+    <br>
+    <label for="">书名：</label>
+    <input type="text" name="bookname">
+    <br>
+    <label for="">价格：</label>
+    <input type="text" name="price">
+    <br>
+    <label for="">作者：</label>
+    <input type="text" name="author">
+    <br>
+    <input type="submit" value="添加书籍">
+    
+    </form>
+</body>
+</html>

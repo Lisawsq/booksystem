@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>所有图书信息</h1>
+    <table border='1' style="width:600px;text-align:center;">
+        <tr>
+            <th>书名</th>
+            <th>作者</th>
+            <th>类别</th>
+            <th>价格</th>
+            <th>热度</th>
+            <th>删除</th>
+        </tr>
+        <!-- 显示书籍信息 -->
+        {{each data book}}
+        <tr>
+            <td>《{{book.bookname}}》</td>
+            <!-- <td><a href="/book/author?author={{book.author}}">{{book.author}}</a></td> -->            
+            <td><a href="/showbooks?author={{book.author}}">{{book.author}}</a></td>
+            <!-- <td><a href="/book/type">{{book.typeInfo.type}}</a></td> -->            
+            <td><a href="/showbooks?typeInfo={{book.typeInfo.id}}">{{book.typeInfo.type}}</a></td>
+            <td>${{book.price}}</td>
+            <td>{{book.typeInfo.hot}}</td>
+            <td><a href="/book/remove?id={{book.id}}">🚮</a></td>
+        </tr>
+        {{/each}}
+    </table>
+    <form action="/book/search" style="float:right;margin-top:10px;">
+        <input type="text" name="search">
+        <input type="submit" value="搜索">
+    </form>
+</body>
+</html>
